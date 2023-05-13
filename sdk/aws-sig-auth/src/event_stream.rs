@@ -11,7 +11,8 @@ use aws_smithy_eventstream::frame::{Message, SignMessage, SignMessageError};
 use aws_smithy_http::property_bag::{PropertyBag, SharedPropertyBag};
 use aws_types::region::SigningRegion;
 use aws_types::SigningService;
-use std::time::SystemTime;
+//use std::time::SystemTime;
+use web_time::{Instant, SystemTime, Duration, UNIX_EPOCH};
 
 /// Event Stream SigV4 signing implementation.
 #[derive(Debug)]
@@ -97,7 +98,8 @@ mod tests {
     use aws_types::region::Region;
     use aws_types::region::SigningRegion;
     use aws_types::SigningService;
-    use std::time::{Duration, UNIX_EPOCH};
+    //use std::time::{Duration, UNIX_EPOCH};
+    use web_time::{Instant, SystemTime, Duration, UNIX_EPOCH};
 
     #[test]
     fn sign_message() {

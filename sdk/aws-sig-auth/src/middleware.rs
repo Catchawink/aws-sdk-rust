@@ -5,7 +5,8 @@
 
 use std::error::Error;
 use std::fmt::{Display, Formatter};
-use std::time::SystemTime;
+//use std::time::SystemTime;
+use web_time::{Instant, SystemTime, Duration, UNIX_EPOCH};
 
 use aws_smithy_http::middleware::MapRequest;
 use aws_smithy_http::operation::Request;
@@ -190,8 +191,9 @@ impl MapRequest for SigV4SigningStage {
 #[cfg(test)]
 mod test {
     use std::convert::Infallible;
-    use std::time::{Duration, UNIX_EPOCH};
-
+    //use std::time::{Duration, UNIX_EPOCH};
+    use web_time::{Instant, SystemTime, Duration, UNIX_EPOCH};
+    
     use aws_smithy_http::body::SdkBody;
     use aws_smithy_http::middleware::MapRequest;
     use aws_smithy_http::operation;
