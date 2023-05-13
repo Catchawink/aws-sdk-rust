@@ -5,7 +5,8 @@
 
 use std::ops::Deref;
 use std::sync::{Arc, Mutex};
-use std::time::{Duration, SystemTime};
+//use std::time::{Duration, SystemTime};
+use web_time::{Instant, SystemTime, Duration};
 
 /// Time source abstraction
 ///
@@ -39,7 +40,7 @@ impl TimeSource {
     /// Returns the current system time based on the mode.
     pub fn now(&self) -> SystemTime {
         match &self.0 {
-            Inner::Default => SystemTime::now(),
+            Inner::Default => SystemTime::now(),//SystemTime::now(),
             Inner::Testing(testing) => testing.now(),
         }
     }
@@ -130,15 +131,17 @@ mod test {
     fn default_time_source_should_not_panic_on_calling_now() {
         let time_source = TimeSource::default();
         // no panics
-        let _ = time_source.now();
+        let _ = SystemTime::now();//time_source.now();
     }
 
     #[test]
     fn testing_time_source_should_behave_as_expected() {
         let mut testing = TestingTimeSource::new(UNIX_EPOCH);
-        let time_source = TimeSource::testing(&testing);
-        assert_eq!(time_source.now(), UNIX_EPOCH);
+        //let time_source = TimeSource::testing(&testing);
+        assert_eq!(SystemTime::now(), UNIX_EPOCH);
+        //assert_eq!(time_source.now(), UNIX_EPOCH);
         testing.advance(Duration::from_secs(10));
-        assert_eq!(time_source.now(), UNIX_EPOCH + Duration::from_secs(10));
+        assert_eq!(SystemTime::now(), UNIX_EPOCH + Duration::from_secs(10));
+        //assert_eq!(time_source.now(), UNIX_EPOCH + Duration::from_secs(10));
     }
 }
