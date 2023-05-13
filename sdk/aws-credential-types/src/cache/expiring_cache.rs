@@ -6,7 +6,8 @@
 use std::future::Future;
 use std::marker::PhantomData;
 use std::sync::Arc;
-use std::time::{Duration, SystemTime};
+//use std::time::{Duration, SystemTime};
+use web_time::{Instant, SystemTime, Duration};
 use tokio::sync::{OnceCell, RwLock};
 
 /// Expiry-aware cache

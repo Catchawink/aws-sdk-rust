@@ -6,7 +6,8 @@
 //! Lazy, credentials cache implementation
 
 use std::sync::Arc;
-use std::time::{Duration, Instant};
+//use std::time::{Duration, Instant};
+use web_time::{Instant, SystemTime, Duration};
 
 use aws_smithy_async::future::timeout::Timeout;
 use aws_smithy_async::rt::sleep::AsyncSleep;
