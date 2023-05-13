@@ -16,7 +16,8 @@
 )]
 
 use std::fmt;
-use std::time::SystemTime;
+//use std::time::SystemTime;
+use web_time::{Instant, SystemTime, Duration, UNIX_EPOCH};
 
 pub mod sign;
 
@@ -75,8 +76,9 @@ pub mod signing_params {
     use super::SigningParams;
     use std::error::Error;
     use std::fmt;
-    use std::time::SystemTime;
-
+    //use std::time::SystemTime;
+    use web_time::{Instant, SystemTime, Duration, UNIX_EPOCH};
+    
     /// [`SigningParams`] builder error
     #[derive(Debug)]
     pub struct BuildError {

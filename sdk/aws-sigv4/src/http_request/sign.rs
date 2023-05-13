@@ -17,6 +17,7 @@ use http::{HeaderMap, Method, Uri};
 use std::borrow::Cow;
 use std::convert::TryFrom;
 use std::str;
+use web_time::{Instant, SystemTime, Duration, UNIX_EPOCH};
 
 /// Represents all of the information necessary to sign an HTTP request.
 #[derive(Debug)]
@@ -325,7 +326,8 @@ mod tests {
     use pretty_assertions::assert_eq;
     use proptest::proptest;
     use std::borrow::Cow;
-    use std::time::Duration;
+    //use std::time::Duration;
+    use web_time::{Instant, SystemTime, Duration, UNIX_EPOCH};
 
     macro_rules! assert_req_eq {
         ($a:tt, $b:tt) => {
@@ -603,7 +605,7 @@ mod tests {
             security_token: None,
             region: "us-east-1",
             service_name: "foo",
-            time: std::time::SystemTime::now(),
+            time: SystemTime::now(),
             settings,
         };
 
@@ -632,7 +634,7 @@ mod tests {
                 security_token: None,
                 region: "us-east-1",
                 service_name: "foo",
-                time: std::time::SystemTime::now(),
+                time: SystemTime::now(),
                 settings,
             };
 

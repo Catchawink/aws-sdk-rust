@@ -42,7 +42,8 @@ use crate::SigningOutput;
 use aws_smithy_eventstream::frame::{write_headers_to, Header, HeaderValue, Message};
 use bytes::Bytes;
 use std::io::Write;
-use std::time::SystemTime;
+//use std::time::SystemTime;
+use web_time::{Instant, SystemTime, Duration, UNIX_EPOCH};
 
 /// Event stream signing parameters
 pub type SigningParams<'a> = super::SigningParams<'a, ()>;
@@ -143,8 +144,9 @@ fn sign_payload<'a>(
 #[cfg(test)]
 mod tests {
     use super::*;
-    use std::time::{Duration, UNIX_EPOCH};
-
+    //use std::time::{Duration, UNIX_EPOCH};
+    use web_time::{Instant, SystemTime, Duration, UNIX_EPOCH};
+    
     #[test]
     fn string_to_sign() {
         let message_to_sign = Message::new(&b"test payload"[..]).add_header(Header::new(

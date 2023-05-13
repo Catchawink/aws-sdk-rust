@@ -6,7 +6,8 @@
 // Some of the functions in this file are unused when disabling certain features
 #![allow(dead_code)]
 
-use std::time::SystemTime;
+//use std::time::SystemTime;
+use web_time::{Instant, SystemTime, Duration, UNIX_EPOCH};
 use time::{OffsetDateTime, Time};
 
 /// Truncates the subseconds from the given `SystemTime` to zero.

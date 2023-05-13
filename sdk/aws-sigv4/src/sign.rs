@@ -8,7 +8,8 @@
 use crate::date_time::format_date;
 use hmac::{digest::FixedOutput, Hmac, Mac};
 use sha2::{Digest, Sha256};
-use std::time::SystemTime;
+//use std::time::SystemTime;
+use web_time::{Instant, SystemTime, Duration, UNIX_EPOCH};
 
 /// HashedPayload = Lowercase(HexEncode(Hash(requestPayload)))
 #[allow(dead_code)] // Unused when compiling without certain features
