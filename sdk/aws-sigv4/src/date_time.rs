@@ -6,9 +6,12 @@
 // Some of the functions in this file are unused when disabling certain features
 #![allow(dead_code)]
 
+use time::Time;
 //use std::time::SystemTime;
 use web_time::{Instant, SystemTime, Duration, UNIX_EPOCH};
-use time::{OffsetDateTime, Time};
+
+use crate::offset_date_time::OffsetDateTime;
+//use time::{OffsetDateTime, Time};
 
 /// Truncates the subseconds from the given `SystemTime` to zero.
 pub(crate) fn truncate_subsecs(time: SystemTime) -> SystemTime {

@@ -23,6 +23,12 @@ pub mod sign;
 
 mod date_time;
 
+mod offset_date_time;
+
+mod utc_offset;
+
+mod original_date_time;
+
 #[cfg(feature = "sign-eventstream")]
 pub mod event_stream;
 
@@ -78,7 +84,7 @@ pub mod signing_params {
     use std::fmt;
     //use std::time::SystemTime;
     use web_time::{Instant, SystemTime, Duration, UNIX_EPOCH};
-    
+
     /// [`SigningParams`] builder error
     #[derive(Debug)]
     pub struct BuildError {
